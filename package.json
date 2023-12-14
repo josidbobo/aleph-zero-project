@@ -9,13 +9,22 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:inkly.convert",
+    "onCommand:inkly.copyText"
+  ],
   "main": "./extension.js",
   "contributes": {
-    "commands": [{
-      "command": "inkly.helloWorld",
-      "title": "Hello World"
-    }]
+    "commands": [
+      {
+        "command": "inkly.convert",
+        "title": "Inkly Convert"
+      },
+      {
+        "command": "inkly.copyText",
+        "title": "Inkly Copy"
+      }
+    ]
   },
   "scripts": {
     "lint": "eslint .",
@@ -23,12 +32,18 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.85.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
-    "eslint": "^8.54.0",
-    "typescript": "^5.3.2",
+    "@types/vscode": "^1.85.0",
     "@vscode/test-cli": "^0.0.4",
-    "@vscode/test-electron": "^2.3.8"
+    "@vscode/test-electron": "^2.3.8",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "clipboardy": "^4.0.0",
+    "dotenv": "^16.3.1",
+    "formdata": "^0.10.4"
   }
 }
