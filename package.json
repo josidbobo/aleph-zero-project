@@ -44,6 +44,7 @@
     "axios": "^1.6.2",
     "clipboardy": "^4.0.0",
     "dotenv": "^16.3.1",
-    "formdata": "^0.10.4"
+    "formdata": "^0.10.4",
+    "fs": "^0.0.1-security"
   }
 }

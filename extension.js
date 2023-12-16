@@ -1,9 +1,12 @@
 // The module 'vscode' contains the VS Code extensibility API
+
+const path = require('path');
+
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
 const axios = require('axios');
+const fs = require('fs');
 // @ts-ignore
-const formData = require('form-data');
 
 
 // This method is called when your extension is activated
@@ -13,7 +16,7 @@ const formData = require('form-data');
  * @param {vscode.ExtensionContext} context
  */
 // @ts-ignore
-function activate(context) {
+async function activate(context) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extensi
@@ -26,76 +29,99 @@ function activate(context) {
 		// The code you place here will be executed every time your command is executed
 		//vscode.commands.executeCommand('inkly.copyText');
  
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Solidity code converted to !ink!');
 		//const copyHandler = import("clipboardy");
 		// @ts-ignore
 		const env = require("dotenv").config();
 		
 		const doc = vscode.window.activeTextEditor;
+		const fileName = doc.document.fileName;
 		if (!doc) {
 			vscode.window.showInformationMessage('No open solidity file, please open a file to begin');
+			return;
+		}else if(!fileName.toLowerCase().includes('.sol')){
+			vscode.window.showInformationMessage('No open solidity file, please open a Solidity file to begin');
 			return;
 		}
 		// @ts-ignore
 		//console.log(`Taxi for Email: sending ${doc.document.lineCount} lines for validation`);
 		// @ts-ignore
-		const fileName = doc.document.fileName;
+		
+		console.log(fileName);
 		// @ts-ignore
 		const docStream = doc.document.getText();
 
-		var formData = new FormData();
-		//formData.append('html', docStream, { filename: fileName });
-		// @ts-ignore
-		var fh = formData.getHeaders();
-		fh['Accept'] = 'application/json';
-		// @ts-ignore
-		fh['Authorization'] = `Bearer ${process.env.api-key}`;
-
-		axios({
-			method: 'post',
-			url: 'https://api.openai.com/v1/completions/',
-			headers: fh,
-			data: {
-				"prompt": `Convert this Solidity Code to !ink: "${docStream}"`,
-				"max_tokens": 256,
-				"model": "gpt-4"
-			},
-		})
-			.then(response => {
-				if (response.status === 200) {
-					console.log(response.data);
-					vscode.window.showInformationMessage(response.data.choices[0].text);
-
-					// @ts-ignore
-					//const diags = displayDiagnostics(response.data.choices[0].text, doc.document, startTime, !!showSummary);
-					// @ts-ignore
-					//dcoll.delete(doc.document.uri);
-					// @ts-ignore
-					//dcoll.set(doc.document.uri, diags);
-				}
-				else {
-					// Unexpected response
-					const strUnexpected = `Command Terminated Unsuccessfully: ${response.status}  - ${response.statusText}`;
-					console.log(strUnexpected);
-					vscode.window.showErrorMessage(strUnexpected);
-				}
-			})
-			.catch(error => {
-				// API has returned an error
-				const strError = `Command Terminated Unsuccessfully: ${error.response.status} - ${error.response.statusText}`;
-				console.log(strError);
-				vscode.window.showErrorMessage(strError);
+		/**
+		 * @type {any}
+		 */
+		 vscode.window.withProgress({
+			cancellable: false,
+			location: vscode.ProgressLocation.Notification,
+			title: 'inkly',
+		}, async (progress) => {
+			progress.report({message: 'Converting to !ink'});
+			try{
+			const response = await axios.post(process.env.url, {
+				"prompt": process.env.ink,
+				"max_tokens": 512,
+				"model": process.env.model,
+				"seed" : 2
+			},{
+				headers: {
+					'Content-Type' : 'application/json',
+					'Authorization': process.env.api_key,
+				},
 			});
+			if (response.status === 200) {
+				console.log(response.data.choices[0].text);
+				//vscode.window.showInformationMessage(response.data.choices[0].text);
+				// Display a message box to the user
+				vscode.window.showInformationMessage('Solidity code converted to ink!');
+				const filePath = path.join(vscode.workspace.rootPath, "contract.rs");
+				fs.writeFileSync(filePath, response.data.choices[0].text);
+
+				const openPath = vscode.Uri.file(filePath);
+
+				vscode.workspace.openTextDocument(openPath).then(doc => {
+					vscode.window.showTextDocument(doc);
+				});
+				// const wsedit = new vscode.WorkspaceEdit();
+				// const wsPath = vscode.workspace.workspaceFolders[0].uri.fsPath; // gets the path of the first workspace folder
+				// const filePath = vscode.Uri.file(wsPath + `/ink_contracts/contract.rs`);
+				// vscode.window.showInformationMessage(filePath.toString());
+				// wsedit.createFile(filePath, { ignoreIfExists: true });
+				// vscode.workspace.applyEdit(wsedit);
+				// vscode.window.showInformationMessage('Created a new file: ink_contracts/contract.rs');
+
+				
+				console.log(response.data.choices[0].text);
+			}
+			else {
+				// Unexpected response
+				progress.report({message: 'An Error occured'})
+				const strUnexpected = `Status Command Terminated Unsuccessfully: ${response.status}  - ${response.statusText}`;
+				console.log(strUnexpected);
+				vscode.window.showErrorMessage(strUnexpected);
+			}
+		
+			//return response.data.choices[0].text;
+	}catch(error){
+		// API has returned an error
+		const strError = `Catch Command Terminated Unsuccessfully: ${error.response.status} - ${error.response.statusText}`;
+		console.log(strError);
+		vscode.window.showErrorMessage(strError);
+	}
+	progress.report({message: 'Finished'});
+});
 	});
 
-		
 	// @ts-ignore
 	context.subscriptions.push(disposable);
 	// @ts-ignore
 	//context.subscriptions.push(copyTextCommand);
 // @ts-ignore
-}
+	}
+
+
 
 // This method is called when your extension is deactivated
 function deactivate() {}
@@ -170,7 +196,9 @@ function deactivate() {}
 // 	}
 // 	return diags;
 // }
+
 module.exports = {
 	activate,
 	deactivate
 }
+	
