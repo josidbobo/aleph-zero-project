@@ -6,9 +6,8 @@ const path = require('path');
 const vscode = require('vscode');
 const axios = require('axios');
 const fs = require('fs');
+
 // @ts-ignore
-
-
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 
@@ -23,7 +22,12 @@ async function activate(context) {
 	console.log('inkly is now active!');
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
-	let dcoll = vscode.languages.createDiagnosticCollection('taxi');
+	let dcoll = vscode.languages.createDiagnosticCollection('inklyy');
+
+	let build = vscode.commands.registerCommand('inkly.build', function () {
+		//const clipboardy = require('clipboardy');
+
+	})
 	// @ts-ignore
 	let disposable = vscode.commands.registerCommand('inkly.convert', function () {
 		// The code you place here will be executed every time your command is executed
@@ -32,21 +36,33 @@ async function activate(context) {
 		//const copyHandler = import("clipboardy");
 		// @ts-ignore
 		const env = require("dotenv").config();
-		
+
 		const doc = vscode.window.activeTextEditor;
+		
 		const fileName = doc.document.fileName;
+		
 		if (!doc) {
 			vscode.window.showInformationMessage('No open solidity file, please open a file to begin');
 			return;
 		}else if(!fileName.toLowerCase().includes('.sol')){
-			vscode.window.showInformationMessage('No open solidity file, please open a Solidity file to begin');
+			vscode.window.showErrorMessage('The active window is not a solidity file, please select a Solidity file to begin');
 			return;
 		}
 		// @ts-ignore
 		//console.log(`Taxi for Email: sending ${doc.document.lineCount} lines for validation`);
 		// @ts-ignore
-		
-		console.log(fileName);
+		const splitted = fileName.split('\\');
+		let contract_name = 'contract';
+		splitted.map(function (e, i, array){
+			const p = e.includes('.sol');
+			if(p === true){
+				array[i].split('.').map(function(y, r, t){
+					console.log(t);
+					contract_name = t[0];
+				})
+			}
+		})
+
 		// @ts-ignore
 		const docStream = doc.document.getText();
 
@@ -61,10 +77,10 @@ async function activate(context) {
 			progress.report({message: 'Converting to !ink'});
 			try{
 			const response = await axios.post(process.env.url, {
-				"prompt": process.env.ink,
-				"max_tokens": 512,
+				"prompt": process.env.prompt,
+				"max_tokens": process.env.tokens,
 				"model": process.env.model,
-				"seed" : 2
+				"seed" : 1
 			},{
 				headers: {
 					'Content-Type' : 'application/json',
@@ -72,11 +88,10 @@ async function activate(context) {
 				},
 			});
 			if (response.status === 200) {
-				console.log(response.data.choices[0].text);
 				//vscode.window.showInformationMessage(response.data.choices[0].text);
 				// Display a message box to the user
 				vscode.window.showInformationMessage('Solidity code converted to ink!');
-				const filePath = path.join(vscode.workspace.rootPath, "contract.rs");
+				const filePath = path.join(vscode.workspace.rootPath, `${contract_name}.rs`);
 				fs.writeFileSync(filePath, response.data.choices[0].text);
 
 				const openPath = vscode.Uri.file(filePath);
@@ -92,30 +107,27 @@ async function activate(context) {
 				// vscode.workspace.applyEdit(wsedit);
 				// vscode.window.showInformationMessage('Created a new file: ink_contracts/contract.rs');
 
-				
-				console.log(response.data.choices[0].text);
 			}
 			else {
 				// Unexpected response
 				progress.report({message: 'An Error occured'})
-				const strUnexpected = `Status Command Terminated Unsuccessfully: ${response.status}  - ${response.statusText}`;
+				const strUnexpected = `Command Terminated Unsuccessfully: ${response.status} - ${response.statusText}`;
 				console.log(strUnexpected);
 				vscode.window.showErrorMessage(strUnexpected);
 			}
-		
 			//return response.data.choices[0].text;
 	}catch(error){
 		// API has returned an error
-		const strError = `Catch Command Terminated Unsuccessfully: ${error.response.status} - ${error.response.statusText}`;
+		const strError = `Command Terminated Unsuccessfully: ${error.response.status} - ${error.response.statusText}`;
 		console.log(strError);
 		vscode.window.showErrorMessage(strError);
 	}
-	progress.report({message: 'Finished'});
 });
 	});
 
 	// @ts-ignore
 	context.subscriptions.push(disposable);
+	context.subscriptions.push(build);
 	// @ts-ignore
 	//context.subscriptions.push(copyTextCommand);
 // @ts-ignore

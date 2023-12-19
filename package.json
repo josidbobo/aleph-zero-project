@@ -1,6 +1,7 @@
 {
   "name": "inkly",
   "displayName": "!inkly",
+  "publisher" : "Maazi",
   "description": "An extension that makes transitioning from Solidity to !ink contract easier",
   "version": "0.0.1",
   "engines": {
@@ -11,7 +12,7 @@
   ],
   "activationEvents": [
     "onCommand:inkly.convert",
-    "onCommand:inkly.copyText"
+    "onCommand:inkly.build"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -21,8 +22,8 @@
         "title": "Inkly Convert"
       },
       {
-        "command": "inkly.copyText",
-        "title": "Inkly Copy"
+        "command": "inkly.build",
+        "title": "Inkly build"
       }
     ]
   },
