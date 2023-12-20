@@ -4,28 +4,26 @@ Inkly is a robust extension that is built to support !ink smart contract develop
 
 ## Features
 
-_inkly convert_ is used to convert solidity code to !ink contract
+* `inkly convert` is used to convert solidity code to !ink contract and puts it in a defaultfolder _ink_contracts_ with the original solidity file name.  
+* `inkly install cargo-contract` installs the crate that manages !ink development, testing and deployment.  
+* `inkly create project` creates a new !ink project directory with _cargo.toml_ and _lib.rs_ files.
+* `inkly build` builds a debug version of the !ink contract.  
+* `inkly build release` builds the contract for release.
+* `inkly test` for running tests for the contract
+* `inkly deploy` deploys the build wasm module to Aleph zero testnet
 
-For example if there is an image subfolder under your extension project workspace:
 
-\!\[feature X\]\(images/feature-x.png\)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+https://github.com/josidbobo/aleph-zero-project/assets/38986781/bed2a9d5-d8e9-4d10-bdc6-78de948e9284
+
+ 
+> Tip: Ensure to close any open panels before running `inkly convert`.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+In other to avoid the switching of focus to the wrong file, when running `inkly convert` close any open panels before running, ensure only the window with the solidity file(s) is open.
 
 ## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
 
 ## Known Issues
 
@@ -38,16 +36,6 @@ Users appreciate release notes as you update your extension.
 ### 1.0.0
 
 Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
 
 ## Working with Markdown
 
