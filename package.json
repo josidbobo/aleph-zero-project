@@ -1,8 +1,8 @@
 {
   "name": "inkly",
   "displayName": "!inkly",
-  "publisher": "Maazi",
-  "description": "An extension that makes transitioning from Solidity to !ink contract easier",
+  "publisher": "Maazi Okoro",
+  "description": "An extension that makes transitioning from Solidity to !ink smart contract development easier",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.85.0"
@@ -14,7 +14,7 @@
     "onCommand:inkly.convert",
     "onCommand:inkly.build",
     "onCommand:inkly.build-release",
-    "onCommand:inkly.initilise-new",
+    "onCommand:inkly.initialise-new",
     "onCommand:inkly.test",
     "onCommand:inkly.install-cargo-contract",
     "onCommand:inkly.deploy-aleph-zero"
@@ -39,7 +39,7 @@
         "title": "Inkly build release"
       },
       {
-        "command": "inkly.initilise-new",
+        "command": "inkly.initialise-new",
         "title": "Inkly create project"
       },
       {

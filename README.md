@@ -1,10 +1,10 @@
 # inkly README
 
-This is the README for your extension "inkly". After writing up a brief description, we recommend including the following sections.
+Inkly is a robust extension that is built to support !ink smart contract developers as well as make transition for EVM developers to !ink with its rich set of functionalities.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+_inkly convert_ is used to convert solidity code to !ink contract
 
 For example if there is an image subfolder under your extension project workspace:
 
