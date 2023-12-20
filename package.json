@@ -1,7 +1,7 @@
 {
   "name": "inkly",
   "displayName": "!inkly",
-  "publisher" : "Maazi",
+  "publisher": "Maazi",
   "description": "An extension that makes transitioning from Solidity to !ink contract easier",
   "version": "0.0.1",
   "engines": {
@@ -12,7 +12,12 @@
   ],
   "activationEvents": [
     "onCommand:inkly.convert",
-    "onCommand:inkly.build"
+    "onCommand:inkly.build",
+    "onCommand:inkly.build-release",
+    "onCommand:inkly.initilise-new",
+    "onCommand:inkly.test",
+    "onCommand:inkly.install-cargo-contract",
+    "onCommand:inkly.deploy-aleph-zero"
   ],
   "main": "./extension.js",
   "contributes": {
@@ -24,7 +29,28 @@
       {
         "command": "inkly.build",
         "title": "Inkly build"
+      },
+      {
+        "command": "inkly.install-cargo-contract",
+        "title": "Inkly install cargo-contract"
+      },
+      {
+        "command": "inkly.build-release",
+        "title": "Inkly build release"
+      },
+      {
+        "command": "inkly.initilise-new",
+        "title": "Inkly create project"
+      },
+      {
+        "command": "inkly.deploy",
+        "title": "Inkly deploy"
+      },
+      {
+        "command": "inkly.test",
+        "title": "Inkly test"
       }
+      
     ]
   },
   "scripts": {
@@ -43,6 +69,7 @@
   },
   "dependencies": {
     "axios": "^1.6.2",
+    "check-internet-connected": "^2.0.6",
     "clipboardy": "^4.0.0",
     "dotenv": "^16.3.1",
     "formdata": "^0.10.4",
