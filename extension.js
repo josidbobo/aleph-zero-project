@@ -76,9 +76,13 @@ async function activate(context) {
 		if(seed === "" || undefined){
 			vscode.window.showInformationMessage('12-word Seed phrase cannot be empty')
 		}else{
-		const terminal = vscode.window.activeTerminal;
-		terminal.sendText(`cargo contract instantiate --suri "${seed}" --url "${URL}" \ --args ${args === undefined ? "" : args} --execute`, true);
-		}
+			if(vscode.window.activeTerminal != undefined){
+				const terminal = vscode.window.activeTerminal;
+				terminal.sendText(`cargo contract instantiate --suri "${seed}" --url "${URL}" \ --args ${args === undefined ? "" : args} --execute`, true);
+			} else {
+				const terminal = vscode.window.createTerminal('inkly');
+				terminal.sendText(`cargo contract instantiate --suri "${seed}" --url "${URL}" \ --args ${args === undefined ? "" : args} --execute`, true);
+			}}
 	})
 	// @ts-ignore
 	let disposable = vscode.commands.registerCommand('inkly.convert', async function () {

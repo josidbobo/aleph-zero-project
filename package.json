@@ -1,9 +1,10 @@
 {
   "name": "inkly",
   "displayName": "!inkly",
-  "publisher": "Maazi Okoro",
-  "description": "An extension that makes transitioning from Solidity to !ink smart contract development easier",
-  "version": "0.0.1",
+  "publisher": "JoshuaOkoro",
+  "description": "An extension that makes !ink smart contract development easier",
+  "version": "0.0.5",
+  "icon": "./inkly.png",
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -50,7 +51,6 @@
         "command": "inkly.test",
         "title": "Inkly test"
       }
-      
     ]
   },
   "scripts": {

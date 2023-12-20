@@ -14,7 +14,7 @@ Inkly is a robust extension that is built to support !ink smart contract develop
 
 
 
-https://github.com/josidbobo/aleph-zero-project/assets/38986781/bed2a9d5-d8e9-4d10-bdc6-78de948e9284
+![main-extension](https://github.com/josidbobo/aleph-zero-project/assets/38986781/b70d81dd-3f8b-4ca6-8ab8-6a5b26207e0e)
 
 
    
@@ -33,9 +33,12 @@ Calling out known issues can help limit users opening duplicate issues against y
 
 Users appreciate release notes as you update your extension.
 
-### 1.0.0
+### 0.0.1
 
-Initial release of ...
+Initial release of extension
+
+### 0.0.3
+Logo and animation added to ReadMe
 
 ## Working with Markdown
 
