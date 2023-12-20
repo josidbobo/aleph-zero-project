@@ -2,8 +2,7 @@
 
 Inkly is a robust extension that is built to support !ink smart contract development, testing and deployment and to make it easier for EVM developers to transition to the !ink ecosystem with its rich set of functionalities.    
 
-### VSCode MarketPlace link
-https://marketplace.visualstudio.com/items?itemName=JoshuaOkoro.inkly
+![main-extension](https://github.com/josidbobo/aleph-zero-project/assets/38986781/b70d81dd-3f8b-4ca6-8ab8-6a5b26207e0e)
   
 
 ## Features
@@ -31,7 +30,16 @@ Calling out known issues can help limit users opening duplicate issues against y
 
 Users appreciate release notes as you update your extension.
 
+### 0.0.1
 
+Initial release of extension
+
+### 0.0.3
+Logo and animation added to ReadMe
+
+### 0.0.7
+
+Fixed static terminal and gif 
 
 ## Working with Markdown
 
@@ -43,5 +51,7 @@ You can author your README using Visual Studio Code.  Here are some useful edito
 
 ## For more information
 
+* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
+* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**

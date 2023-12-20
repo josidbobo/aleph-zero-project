@@ -25,8 +25,16 @@ async function activate(context) {
 	 let active_terminal = 0;
 
 	let init = vscode.commands.registerCommand('inkly.initialise-new', async function () {
-			const terminal = vscode.window.activeTerminal;
-			terminal.sendText(`cargo contract new new_project${active_terminal}`, true);
+			
+			if(vscode.window.activeTerminal === undefined){
+				const i = vscode.window.createTerminal('inkly')
+					i.show(false);
+					i.sendText(`cargo contract new new_project${active_terminal}`, true);
+			}else{
+				vscode.window.activeTerminal.show();
+				const terminal = vscode.window.activeTerminal;
+				terminal.sendText(`cargo contract new new_project${active_terminal}`, true);
+			}
 		
 		vscode.window.onDidChangeActiveTerminal(e => {
 
@@ -36,24 +44,47 @@ async function activate(context) {
 	})
 
 	let build = vscode.commands.registerCommand('inkly.build', function () {
+		if(vscode.window.activeTerminal != undefined){
+		vscode.window.activeTerminal.show();
 		const terminal = vscode.window.activeTerminal;
 		terminal.sendText(`cargo contract build`, true);
-	
+		}
 	})
 
 	let buildRelease = vscode.commands.registerCommand('inkly.build-release', function () {
+		if(vscode.window.activeTerminal === undefined){
+			const terminal = vscode.window.createTerminal('inkly');
+			terminal.show();
+			terminal.sendText(`cargo contract build --release`, true);
+		}else{
+			vscode.window.activeTerminal.show();
 		const terminal = vscode.window.activeTerminal;
 		terminal.sendText(`cargo contract build --release`, true);
+		}
 	})
 
 	let test = vscode.commands.registerCommand('inkly.test', function () {
+		if(vscode.window.activeTerminal === undefined){
+			const e = vscode.window.createTerminal('inkly')
+			e.show();
+			e.sendText(`cargo test`, true);
+		}else{
+		vscode.window.activeTerminal.show()
 		const terminal = vscode.window.activeTerminal;
 		terminal.sendText(`cargo test`, true);
+		}
 	})
 
 	let createProject = vscode.commands.registerCommand('inkly.install-cargo-contract', async function () {
+		if(vscode.window.activeTerminal === undefined){
+			const ano = vscode.window.createTerminal('inkly');
+				ano.show(false);
+				ano.sendText(`cargo install cargo-contract`, true);
+		}else{
+		vscode.window.activeTerminal.show();	
 		const terminal = vscode.window.activeTerminal;
 		terminal.sendText(`cargo install cargo-contract`, true);
+		}
 	})
 
 	let deploy = vscode.commands.registerCommand('inkly.deploy', async function() {
@@ -77,12 +108,14 @@ async function activate(context) {
 			vscode.window.showInformationMessage('12-word Seed phrase cannot be empty')
 		}else{
 			if(vscode.window.activeTerminal != undefined){
-				const terminal = vscode.window.activeTerminal;
-				terminal.sendText(`cargo contract instantiate --suri "${seed}" --url "${URL}" \ --args ${args === undefined ? "" : args} --execute`, true);
+				vscode.window.activeTerminal.show();
+				vscode.window.activeTerminal.sendText(`cargo contract instantiate --suri "${seed}" --url "${URL}" \ --args ${args === undefined ? "" : args} --execute`, true);
 			} else {
-				const terminal = vscode.window.createTerminal('inkly');
-				terminal.sendText(`cargo contract instantiate --suri "${seed}" --url "${URL}" \ --args ${args === undefined ? "" : args} --execute`, true);
-			}}
+			 	const terminal = vscode.window.createTerminal('inkly');
+				terminal.show();
+			 	terminal.sendText(`cargo contract instantiate --suri "${seed}" --url "${URL}" \ --args ${args === undefined ? "" : args} --execute`, true);
+			 }
+			}
 	})
 	// @ts-ignore
 	let disposable = vscode.commands.registerCommand('inkly.convert', async function () {

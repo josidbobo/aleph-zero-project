@@ -3,7 +3,7 @@
   "displayName": "!inkly",
   "publisher": "JoshuaOkoro",
   "description": "An extension that makes !ink smart contract development easier",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "icon": "./inkly.png",
   "engines": {
     "vscode": "^1.85.0"
