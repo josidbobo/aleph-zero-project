@@ -1,6 +1,9 @@
 # inkly README
 
-Inkly is a robust extension that is built to support !ink smart contract development, testing and deployment and to make it easier for EVM developers to transition to the !ink ecosystem with its rich set of functionalities.
+Inkly is a robust extension that is built to support !ink smart contract development, testing and deployment and to make it easier for EVM developers to transition to the !ink ecosystem with its rich set of functionalities.    
+
+![main-extension](https://github.com/josidbobo/aleph-zero-project/assets/38986781/b70d81dd-3f8b-4ca6-8ab8-6a5b26207e0e)
+  
 
 ## Features
 
@@ -10,13 +13,7 @@ Inkly is a robust extension that is built to support !ink smart contract develop
 * `inkly build` builds a debug version of the !ink contract.  
 * `inkly build release` builds the contract for release.
 * `inkly test` for running tests for the contract
-* `inkly deploy` deploys the build wasm module to Aleph zero testnet
-
-
-
-![main-extension](https://github.com/josidbobo/aleph-zero-project/assets/38986781/b70d81dd-3f8b-4ca6-8ab8-6a5b26207e0e)
-
-
+* `inkly deploy` deploys the build wasm module to Aleph zero testnet.
    
 > Tip: Ensure to close any open panels before running `inkly convert`.
 
