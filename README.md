@@ -1,6 +1,6 @@
 # inkly README
 
-Inkly is a robust extension that is built to support !ink smart contract developers as well as make transition for EVM developers to !ink with its rich set of functionalities.
+Inkly is a robust extension that is built to support !ink smart contract development, testing and deployment and to make it easier for EVM developers to transition to the !ink ecosystem with its rich set of functionalities.
 
 ## Features
 
@@ -16,14 +16,14 @@ Inkly is a robust extension that is built to support !ink smart contract develop
 
 https://github.com/josidbobo/aleph-zero-project/assets/38986781/bed2a9d5-d8e9-4d10-bdc6-78de948e9284
 
- 
+
+   
 > Tip: Ensure to close any open panels before running `inkly convert`.
 
 ## Requirements
 
-In other to avoid the switching of focus to the wrong file, when running `inkly convert` close any open panels before running, ensure only the window with the solidity file(s) is open.
-
-## Extension Settings
+* An Internet connection is needed when running this extension.   
+* In other to avoid the switching of focus to the wrong file, when running `inkly convert` close any open panels before running, ensure only the window with the solidity file(s) is open.
 
 ## Known Issues
 
