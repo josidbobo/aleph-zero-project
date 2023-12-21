@@ -11,14 +11,14 @@ It is a VScode extention that creates, initilises, builds, tests and deploys !in
 ## Features
 
 * `inkly convert` is used to convert solidity contracts to !ink and puts it in all converted files named with their original solidity names in a directory called _ink_contracts_
-* Eg:      contracts/contract.sol -> ink_contracts/contract.rs
+Eg:    contracts/contract.sol -> ink_contracts/contract.rs
   
 * `inkly install cargo-contract` installs the crate that manages !ink development, testing and deployment.
   
 * `inkly create project` creates a new !ink project directory with _cargo.toml_ and _lib.rs_ files.
   
 * `inkly build` builds a debug version of the !ink contract.
-* 
+  
 * `inkly build release` builds the contract for release.
   
 * `inkly test` for running tests for the contract
