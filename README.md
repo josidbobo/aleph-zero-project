@@ -31,7 +31,7 @@ Eg:    contracts/contract.sol -> ink_contracts/contract.rs
 ## Requirements
 
 * An Internet connection is needed when running this extension.   
-* In other to avoid the switching of focus to the wrong file, when running `inkly convert` close any open _VScode panels_ before running, ensure only the window with the solidity file(s) is open.
+* In other to avoid the switching of focus to the wrong window, when running `inkly convert` close any open _VScode panels_ before running, ensure only the window with the solidity file(s) is open.
   ![Screenshot (212)](https://github.com/josidbobo/aleph-zero-project/assets/38986781/36b3041f-0a9e-4a9e-bf69-0889a7c7f16b)
 
 ## Set Up  
