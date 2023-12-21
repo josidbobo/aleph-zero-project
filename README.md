@@ -1,13 +1,15 @@
 # inkly
 
-Inkly is a robust VScode extension that is built to support !ink smart contract development, testing and deployment and to make it easier for EVM developers to transition to the !ink ecosystem with its rich set of functionalities. One of the challenges I faced transitioning from an EVM background to Substrate and !ink was converting my solidity contracts to !ink. I had to re-write some of my contracts in Solidity from scratch, this spurred me to build this tool apart from it being able to aid your !ink project creation from ground up `inkly create project` till deploying `inkly deploy` on Aleph zero testnet (more chains coming soon...), it can aid in transitioning solidity contracts to !ink. It aims to take the burden off both new and existing !ink developers from having to memorise all the cargo contract commands.  
+Inkly is a robust VScode extension that is built to support !ink smart contract development, testing and deployment and to make it easier for EVM developers to transition to the !ink ecosystem with its rich set of functionalities. One of the challenges I faced transitioning from an EVM background to Substrate and !ink was converting my solidity contracts to !ink. I had to re-write some of my contracts in Solidity from scratch, which spurred me to build this tool apart from it being able to aid your !ink project creation from ground up `inkly create project` till deploying `inkly deploy` on Aleph zero testnet (more chains coming soon...), it can aid in transitioning solidity contracts to !ink. It aims to take the burden off both new and existing !ink developers from having to memorize all the cargo contract commands.    
 
+## Video Demo
+[demo](https://drive.google.com/drive/folders/1uuuH0xvDfTo20jxdtDEzdKtBToAXsM5X?usp=sharing)
 
 ### VSCode MarketPlace link
 https://marketplace.visualstudio.com/items?itemName=JoshuaOkoro.inkly
 
 ## Key Ideas Overview of Architecture
-It is a VScode extention that creates, initilises, builds, tests and deploys !ink contracts on chain (Aleph zero) as well as aiding Solidity to !ink conversion. The main file is the `extension.js` file 
+It is a VScode extension that creates, initialises, builds, tests, and deploys !ink contracts on chain (Aleph zero) as well as aiding Solidity to !ink conversion. The main file is the `extension.js` file 
   
 ## Features
 
