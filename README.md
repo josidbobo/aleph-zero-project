@@ -1,29 +1,28 @@
 # inkly
 
-Inkly is a robust extension that is built to support !ink smart contract development, testing and deployment and to make it easier for EVM developers to transition to the !ink ecosystem with its rich set of functionalities. One of the challenges I faced transitioning from an EVM background to Substrate and !ink was converting my solidity contracts to !ink. I had to re-write some of my contracts in Solidity from scratch, this spurred me to build this tool apart from it being able to aid your !ink project creation from ground up till deploying on Aleph zero testnet (more chains coming soon...) you can convert solidity contract to !ink using the command `inkly convert`
+Inkly is a robust VScode extension that is built to support !ink smart contract development, testing and deployment and to make it easier for EVM developers to transition to the !ink ecosystem with its rich set of functionalities. One of the challenges I faced transitioning from an EVM background to Substrate and !ink was converting my solidity contracts to !ink. I had to re-write some of my contracts in Solidity from scratch, this spurred me to build this tool apart from it being able to aid your !ink project creation from ground up `inkly create project` till deploying `inkly deploy` on Aleph zero testnet (more chains coming soon...), it can aid in transitioning solidity contracts to !ink.
 
 ### VSCode MarketPlace link
 https://marketplace.visualstudio.com/items?itemName=JoshuaOkoro.inkly
 
 ## Key Ideas Overview of Architecture
-It is a VScode extention that creates, initilises, builds, tests and deploys !ink contracts on chain (Aleph zero) as well as aiding Solidity to !ink conversion.  
-The main file is the `extension.js` file 
+It is a VScode extention that creates, initilises, builds, tests and deploys !ink contracts on chain (Aleph zero) as well as aiding Solidity to !ink conversion. The main file is the `extension.js` file 
   
 ## Features
 
 * `inkly convert` is used to convert solidity contracts to !ink and puts it in all converted files named with their original solidity names in a directory called _ink_contracts_
 * Eg:      contracts/contract.sol -> ink_contracts/contract.rs
-* 
+  
 * `inkly install cargo-contract` installs the crate that manages !ink development, testing and deployment.
-* 
+  
 * `inkly create project` creates a new !ink project directory with _cargo.toml_ and _lib.rs_ files.
-* 
+  
 * `inkly build` builds a debug version of the !ink contract.
 * 
 * `inkly build release` builds the contract for release.
-* 
+  
 * `inkly test` for running tests for the contract
-* 
+  
 * `inkly deploy` deploys the build wasm module to Aleph zero testnet.
    
 > Tip: Ensure to close any open panels before running `inkly convert`. 
