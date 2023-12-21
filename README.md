@@ -1,6 +1,7 @@
 # inkly
 
-Inkly is a robust VScode extension that is built to support !ink smart contract development, testing and deployment and to make it easier for EVM developers to transition to the !ink ecosystem with its rich set of functionalities. One of the challenges I faced transitioning from an EVM background to Substrate and !ink was converting my solidity contracts to !ink. I had to re-write some of my contracts in Solidity from scratch, this spurred me to build this tool apart from it being able to aid your !ink project creation from ground up `inkly create project` till deploying `inkly deploy` on Aleph zero testnet (more chains coming soon...), it can aid in transitioning solidity contracts to !ink. It aims to take the burden off both new and existing !ink developers from having to memorise all the cargo contract commands.
+Inkly is a robust VScode extension that is built to support !ink smart contract development, testing and deployment and to make it easier for EVM developers to transition to the !ink ecosystem with its rich set of functionalities. One of the challenges I faced transitioning from an EVM background to Substrate and !ink was converting my solidity contracts to !ink. I had to re-write some of my contracts in Solidity from scratch, this spurred me to build this tool apart from it being able to aid your !ink project creation from ground up `inkly create project` till deploying `inkly deploy` on Aleph zero testnet (more chains coming soon...), it can aid in transitioning solidity contracts to !ink. It aims to take the burden off both new and existing !ink developers from having to memorise all the cargo contract commands.  
+
 
 ### VSCode MarketPlace link
 https://marketplace.visualstudio.com/items?itemName=JoshuaOkoro.inkly
@@ -30,7 +31,8 @@ Eg:    contracts/contract.sol -> ink_contracts/contract.rs
 ## Requirements
 
 * An Internet connection is needed when running this extension.   
-* In other to avoid the switching of focus to the wrong file, when running `inkly convert` close any open VScode panels before running, ensure only the window with the solidity file(s) is open.
+* In other to avoid the switching of focus to the wrong file, when running `inkly convert` close any open _VScode panels_ before running, ensure only the window with the solidity file(s) is open.
+  ![Screenshot (212)](https://github.com/josidbobo/aleph-zero-project/assets/38986781/36b3041f-0a9e-4a9e-bf69-0889a7c7f16b)
 
 ## Set Up  
 To set up, you need an api key from [openAI](https://openai.com) and append to your `.env` file.
